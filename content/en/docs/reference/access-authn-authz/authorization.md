@@ -125,6 +125,16 @@ kubectl auth can-i list secrets --namespace dev --as dave
 no
 ```
 
+Administrators can also query the API authorization layer to verify service account permissions.
+
+```bash
+kubectl auth can-i create deployments --as system:serviceaccount:dev:dev-serviceaccount
+```
+```
+yes
+```
+
+
 `SelfSubjectAccessReview` is part of the `authorization.k8s.io` API group, which
 exposes the API server authorization to external services. Other resources in
 this group include:
